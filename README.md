@@ -1,12 +1,25 @@
 # Frontier Atlas
 
-**Discover the technological inflection points that create tomorrow's companies.**
+**Turn research papers and open-source activity into technology maps, economics scenarios, and investment theses.**
 
-Frontier Atlas is an open-source, institutional-grade deep-tech research and investment intelligence platform built for venture capital analysts, partners, technical researchers, and founders. It combines real scientific ingestion (OpenAlex, arXiv, GitHub), deterministic technology momentum & breakthrough scoring, first-principles unit economics modeling (Robotics, Battery Storage, AI Inference), a NetworkX-backed Knowledge Graph, and a controlled 5-stage Google Gemini research agent pipeline.
+Frontier Atlas is an MIT-licensed research and investment intelligence prototype built for venture capital analysts, partners, technical researchers, and founders. It combines real scientific ingestion (OpenAlex, arXiv, GitHub), deterministic technology momentum & breakthrough scoring, first-principles unit economics modeling (Robotics, Battery Storage, AI Inference), a NetworkX-backed Knowledge Graph, and a controlled 5-stage Google Gemini research agent pipeline.
 
 ![Frontier Atlas architecture](docs/assets/architecture.png)
 
 ---
+
+## Start here
+
+- **Explore the design:** [Architecture](docs/architecture/SYSTEM_DESIGN.md) and [methodology](docs/methodology/SCORING_AND_ECONOMICS.md).
+- **Run it locally:** follow the quickstart below. The web UI is on port 3000 and API documentation on port 8000.
+- **What can I use it for?** Compare a robotics deployment scenario, inspect research behind a technology, or draft a thesis with evidence and conditions that would disprove it.
+- **Contribute:** see [CONTRIBUTING.md](CONTRIBUTING.md). Small documentation fixes and connector fixtures are welcome.
+
+### Data and model limits
+
+The application includes seeded examples and calculated scenarios. Scores, case-study metrics, benchmark summaries and economic outputs are not independent proof of clinical effectiveness, commercial traction or investment returns. Verify each source, unit, date and assumption before relying on an output. A citation is a reference to inspect, not a guarantee that the claim is supported.
+
+The repository includes connectors for live public sources; running the UI alone does not guarantee fresh data. Optional Gemini access needs your own key and an available model. Check provider access and pricing before enabling requests.
 
 ## Core Capabilities
 
@@ -32,11 +45,15 @@ Frontier Atlas is an open-source, institutional-grade deep-tech research and inv
 
 ### Option A: Docker Compose
 ```bash
-git clone <repository-url>
+git clone https://github.com/marpusakethram/frontier-atlas.git
 cd frontier-atlas
 cp .env.example .env
 docker compose up --build
 ```
+
+The API container runs migrations and seeds the example dataset automatically on startup.
+
+Use the example credentials only for local development. Review networking, authentication and database configuration before exposing a deployment publicly.
 
 ### Option B: Local Bare-Metal Development (PostgreSQL + uv + Node.js)
 ```bash
@@ -56,3 +73,18 @@ npm run dev
 ```
 
 Open `http://localhost:3000` for the Frontier Atlas terminal and `http://localhost:8000/docs` for the OpenAPI specification.
+
+
+## Development checks
+
+```bash
+cd services/api
+uv sync --all-extras
+uv run pytest
+```
+
+In a separate terminal, run `npm ci` and `npm run typecheck` from `apps/web`. Test results depend on the configured database and optional services; do not interpret repository documentation as a current CI pass.
+
+## Feedback
+
+Open an issue with a reproducible connector problem, a scoring assumption to challenge, or a concrete workflow you would like to use. Include public or synthetic examples only.

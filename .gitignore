@@ -43,3 +43,9 @@ test-results/
 Thumbs.db
 .vscode/
 .idea/
+
+# SQLite transient files
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
