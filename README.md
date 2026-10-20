@@ -4,6 +4,8 @@
 
 Frontier Atlas is an open-source, institutional-grade deep-tech research and investment intelligence platform built for venture capital analysts, partners, technical researchers, and founders. It combines real scientific ingestion (OpenAlex, arXiv, GitHub), deterministic technology momentum & breakthrough scoring, first-principles unit economics modeling (Robotics, Battery Storage, AI Inference), a NetworkX-backed Knowledge Graph, and a controlled 5-stage Google Gemini research agent pipeline.
 
+![Frontier Atlas architecture](docs/assets/architecture.png)
+
 ---
 
 ## Core Capabilities
